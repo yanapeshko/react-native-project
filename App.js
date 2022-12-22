@@ -15,6 +15,7 @@ import * as Font from "expo-font";
 export default function App() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [isShowKeybord, setIsShowKeybord] = useState(false);
 
   const nameHandler = (text) => setName(text);
   const passwordHandler = (text) => setPassword(text);
@@ -29,19 +30,25 @@ export default function App() {
         <KeyboardAvoidingView
           behavior={Platform.OS == "ios" ? "padding" : "height"}
         >
-          <TextInput
-            value={name}
-            onChangeText={nameHandler}
-            placeholder="Username"
-            style={styles.input}
-          />
-          <TextInput
-            value={password}
-            onChangeText={passwordHandler}
-            placeholder="Password"
-            secureTextEntry={true}
-            style={styles.input}
-          />
+          <View
+            style={{ ...styles.form, marginBottom: isShowKeybord ? 32 : 43 }}
+          >
+            <TextInput
+              value={name}
+              onChangeText={nameHandler}
+              placeholder="Username"
+              style={styles.input}
+              onFocus={() => setIsShowKeybord(true)}
+            />
+            <TextInput
+              value={password}
+              onChangeText={passwordHandler}
+              placeholder="Password"
+              secureTextEntry={true}
+              style={styles.input}
+              onFocus={() => setIsShowKeybord(true)}
+            />
+          </View>
           <Button title={"Login"} style={styles.input} onPress={onLogin} />
         </KeyboardAvoidingView>
       </View>
