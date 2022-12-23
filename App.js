@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   StyleSheet,
   View,
@@ -11,6 +11,10 @@ import {
   Button,
 } from "react-native";
 import * as Font from "expo-font";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [name, setName] = useState("");
@@ -29,9 +33,22 @@ export default function App() {
     Alert.alert("Credentials", `${name} + ${password}`);
   };
 
+  const [fontsLoaded] = useFonts({
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <TouchableWithoutFeedback onPress={keybordHide}>
-      <View style={styles.container}>
+      <View style={styles.container} onLayout={onLayoutRootView}>
         <KeyboardAvoidingView
           behavior={Platform.OS == "ios" ? "padding" : "height"}
         >
@@ -76,7 +93,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     marginBottom: 10,
-    // fontFamily: "Roboto-Regular",
-    // fontSize: 16,
+    fontFamily: "Roboto-Regular",
+    fontSize: 16,
   },
 });
