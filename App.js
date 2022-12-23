@@ -20,12 +20,17 @@ export default function App() {
   const nameHandler = (text) => setName(text);
   const passwordHandler = (text) => setPassword(text);
 
+  const keybordHide = () => {
+    setIsShowKeybord(false);
+    Keyboard.dismiss();
+  };
+
   const onLogin = () => {
     Alert.alert("Credentials", `${name} + ${password}`);
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback onPress={keybordHide}>
       <View style={styles.container}>
         <KeyboardAvoidingView
           behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -71,5 +76,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     marginBottom: 10,
+    // fontFamily: "Roboto-Regular",
+    // fontSize: 16,
   },
 });
