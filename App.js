@@ -2,9 +2,9 @@ import React, { useCallback } from "react";
 import * as Font from "expo-font";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 
-// import RegistrationScreen from "./Screens/RegistrationScreen/RegistrationScreen";
+// import LoginScreen from "./Screens/LoginScreen/LoginScreen";
+import RegistrationScreen from "./Screens/RegistrationScreen/RegistrationScreen";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,6 +22,5 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-
-  return <LoginScreen onLayout={onLayoutRootView} />;
+  return <RegistrationScreen onLayout={onLayoutRootView} />;
 }

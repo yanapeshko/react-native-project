@@ -11,7 +11,7 @@ import {
   Button,
 } from "react-native";
 
-export default function LoginScreen() {
+export default function RegistrationScreen() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [isShowKeybord, setIsShowKeybord] = useState(false);
@@ -78,23 +78,23 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Regular",
     fontSize: 16,
   },
-  //   btn: {
-  //     display: "flex",
-  //     flexDirection: "column",
-  //     alignItems: "center",
-  //     paddingTop: 16,
-  //     paddingRight: 32,
-  //     paddingBottom: 16,
-  //     paddingLeft: 32,
-  //     gap: 12,
+  btn: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    paddingTop: 16,
+    paddingRight: 32,
+    paddingBottom: 16,
+    paddingLeft: 32,
+    gap: 12,
 
-  //     position: "absolute",
-  //     height: 51,
-  //     left: 16,
-  //     right: 16,
-  //     bottom: 113,
+    position: "absolute",
+    height: 51,
+    left: 16,
+    right: 16,
+    bottom: 113,
 
-  //     backgroundColor: "#FF6C00",
-  //     borderRadius: 100,
-  //   },
+    backgroundColor: "#FF6C00",
+    borderRadius: 100,
+  },
 });
